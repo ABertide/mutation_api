@@ -1,12 +1,15 @@
 const express = require('express');
 
 const app = express();
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     next();
 });
+
+// Route to request mutation
 app.use('/api/mutation', (req, res, next) => {
     let json = require('./data/data.json');
     res.json(json);
